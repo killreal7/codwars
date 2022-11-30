@@ -1,0 +1,4 @@
+def sort_sequence(sequence):
+    zeros=[i for i,v in enumerate(sequence) if v==0]
+    s1=sorted([sorted(sequence[i+1:j])+[0] for i,j in zip([-1]+zeros,zeros)],key=sum)
+    return [v for si in s1 for v in si]
