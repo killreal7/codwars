@@ -1,0 +1,21 @@
+from collections import Counter, defaultdict
+
+def missing_cards(cards):
+    C, D = Counter(), defaultdict(set)
+    for i,row in enumerate(cards):
+        C += Counter(row)
+        for s in row:
+            D[s].add(i)
+    
+    first, second, seen = [], [], set()
+    for k,v in C.items():
+        if v == 6:
+            first.append(k)
+            second.append(k)
+        if v == 7:
+            if D[k] & seen:
+                second.append(k)
+            else:
+                first.append(k)
+                seen.update(D[k])
+    return [first, second]
