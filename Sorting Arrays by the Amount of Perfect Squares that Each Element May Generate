@@ -1,0 +1,3 @@
+from itertools import permutations
+def sort_by_perfsq(arr):
+    return sorted(arr, key = lambda x: [-sum(int("".join(y)) ** 0.5 % 1 == 0 for y in set(permutations(str(x)))), x])
