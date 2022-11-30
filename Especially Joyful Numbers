@@ -1,0 +1,4 @@
+def number_joy(n):
+    d_sum = sum(map(int, str(n)))
+    d_sum_reverse = int(str(d_sum)[::-1])
+    return n == d_sum * d_sum_reverse
