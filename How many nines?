@@ -1,0 +1,8 @@
+def nines(n):
+    s, r = str(n), 0
+    for i, d in enumerate(s):
+        r += int(d) * 9 ** (len(s) - i - 1)
+        if d == '9':
+            r -= 1
+            break
+    return n - r
