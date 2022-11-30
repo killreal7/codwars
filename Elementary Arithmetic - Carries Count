@@ -1,0 +1,9 @@
+def solve(lines):
+    result = []
+    for line in lines.split('\n'):
+        count, c = 0, 0
+        for i, j in zip(*line[::-1].split()):
+            if c := (int(i) + int(j) + c) // 10:
+                count += 1
+        result.append(f'{count} carry operations' if count else 'No carry operation')
+    return '\n'.join(result)
