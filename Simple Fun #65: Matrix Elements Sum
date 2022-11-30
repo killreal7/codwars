@@ -1,0 +1,7 @@
+def matrix_elements_sum(matrix):
+    floor = matrix[0]
+    result = sum(floor)
+    for below in matrix[1:]:
+        floor = [a and b for a, b in zip(floor, below)]
+        result += sum(floor)
+    return result
