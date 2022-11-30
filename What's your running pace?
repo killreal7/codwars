@@ -1,0 +1,7 @@
+def running_pace(distance, time):
+    seconds = int(time.split(":")[0]) * 60 + int(time.split(":")[1])
+    sec_per_mile = seconds / distance
+    m, s = divmod(sec_per_mile, 60)
+    m = str(int(m))
+    s = str(int(s)).zfill(2)
+    return f"{m}:{s}"
