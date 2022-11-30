@@ -1,0 +1,9 @@
+import base64
+
+latin1 = 'latin-1'
+
+def toAscii85(data):
+    return base64.a85encode(data.encode(latin1), adobe=True).decode(latin1)
+    
+def fromAscii85(data):
+    return base64.a85decode(data, adobe=True).decode(latin1)
