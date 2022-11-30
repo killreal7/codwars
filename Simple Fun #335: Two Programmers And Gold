@@ -1,0 +1,11 @@
+def distribution_of(gold):
+    if not gold:    return 0,0
+    if len(gold)<2: return gold[0],0
+    
+    A,B = gold, [max(v,gold[i+1]) for i,v in enumerate(gold[:-1])]
+    
+    for s in range(2,len(A)):
+        A,B = B,[ max( gold[i+s]+min(A[i],A[i+1]),
+                       gold[i]+min(A[i+1],A[i+2]))
+                  for i in range(len(A)-2)]
+    return B[0], min(A)
