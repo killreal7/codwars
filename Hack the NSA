@@ -1,0 +1,9 @@
+def runShell(boxNr):
+    # G00D LUCK!
+    if boxNr == 1:
+        #return 'help'
+        return "CodeWars{7594357083475890320019dsfsdjfl32423hjkasd9834haksdSKJAHD32423khdf}"
+    elif boxNr == 2:
+        return "CodeWars{jfklsfjljlk&8632847dhfkjds876fDKJFHD(F&/KHKJDF}"
+    else:
+        return "CodeWars{fdjslfd2433SKAJF(/&Dfkhk3h4kfsd786234kjf}"
