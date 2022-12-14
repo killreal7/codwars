@@ -1,0 +1,75 @@
+def who_wins_beggar_thy_neighbour(hand_1, hand_2):
+    a_dict = {"J": 1, "Q": 2, "K": 3, "A": 4}
+    common = []
+    turn = "1"
+    penalty = 0
+    while (hand_1 and hand_2) or penalty:
+        if turn == "1":
+            if not penalty:
+                if hand_1[0][0] not in ("J", "Q", "K", "A"):
+                    common.append(hand_1[0])
+                    hand_1.pop(0)
+                    turn = "2"
+                else:
+                    penalty = a_dict[hand_1[0][0]]
+                    common.append(hand_1[0])
+                    hand_1.pop(0)
+                    turn = "2"
+            elif penalty:
+                rev = False
+                for i in range(penalty):
+                    if hand_1:
+                        if hand_1[0][0] not in ("J", "Q", "K", "A"):
+                            common.append(hand_1[0])
+                            hand_1.pop(0)
+                        else:
+                            penalty = a_dict[hand_1[0][0]]
+                            common.append(hand_1[0])
+                            turn = "2"
+                            hand_1.pop(0)
+                            rev = True
+                            break
+                    elif not hand_1:
+                        return 1
+                if not rev:
+                    turn = "2"
+                    hand_2 += common
+                    common = []
+                    penalty = 0
+        elif turn == "2":
+            if not penalty:
+                if hand_2[0][0] not in ("J", "Q", "K", "A"):
+                    common.append(hand_2[0])
+                    hand_2.pop(0)
+                    turn = "1"
+                else:
+                    penalty = a_dict[hand_2[0][0]]
+                    common.append(hand_2[0])
+                    hand_2.pop(0)
+                    turn = "1"
+            elif penalty:
+                rev = False
+                for i in range(penalty):
+                    if hand_2:
+                        if hand_2[0][0] not in ("J", "Q", "K", "A"):
+                            common.append(hand_2[0])
+                            hand_2.pop(0)
+                        else:
+                            rev = True
+                            penalty = a_dict[hand_2[0][0]]
+                            common.append(hand_2[0])
+                            hand_2.pop(0)
+                            turn = "1"
+                            break
+                    elif not hand_2:
+                        return 0
+                if not rev:
+                    turn = "1"
+                    hand_1 += common
+                    common = []
+                    penalty = 0
+
+    if not hand_1:
+        return 1
+    elif not hand_2:
+        return 0
