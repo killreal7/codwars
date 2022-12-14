@@ -1,0 +1,15 @@
+def get_right_truncatable_primes(base):
+    ans = []
+    start = [x for x in [2, 3, 5, 7, 11, 13, 17, 19] if x < base]
+    while len(start) > 0:
+        new_start = []
+        for elem in start:
+            found = False
+            for i in range(base):
+                if fast_is_prime(elem * base + i):
+                    new_start.append(elem * base + i)
+                    found = True
+            if not found and elem != 0:
+                ans.append(elem)
+        start = new_start.copy()
+    return ans
